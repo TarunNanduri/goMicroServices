@@ -1,5 +1,6 @@
 package main
 
+//imports
 import (
 	"log"
 	"net/http"
@@ -12,12 +13,13 @@ import (
 
 
 func main() {
-	//env.Parse()
-	l := log.New(os.Stdout, "product-api", log.LstdFlags)
+	// logger
+	l := log.New(os.Stdout, "MicroServices with Go", log.LstdFlags)
 	// create the handlers
 	ph := handlers.NewProducts(l)
 	// create a new serve mux and register the handlers
 	sm := http.NewServeMux()
+	//register product handler
 	sm.Handle("/", ph)
 	//create a new server
 	s := http.Server{
