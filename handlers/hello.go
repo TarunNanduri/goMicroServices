@@ -7,8 +7,6 @@ import (
 	"net/http"
 )
 
-
-
 // Hello is a simple handler
 type Hello struct {
 	l *log.Logger
