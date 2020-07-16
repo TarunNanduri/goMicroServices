@@ -36,7 +36,7 @@ func main() {
 	postRouter.Use(ph.MiddlewareValidateProduct)
 
 	//CORS
-	ch:=gohandlers.CORS(gohandlers.AllowedOrigins([]string{*}))
+	ch:=gohandlers.CORS(gohandlers.AllowedOrigins([]string{"*"}))
 
 	//create a new server
 	s := http.Server{
