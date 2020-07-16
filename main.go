@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"time"
-
+	gohandlers "github.com/gorilla/handlers"
 	"github.com/TarunNanduri/goMicroServices/handlers"
 	"github.com/gorilla/mux"
 )
@@ -35,10 +35,13 @@ func main() {
 	postRouter.HandleFunc("/", ph.AddProduct)
 	postRouter.Use(ph.MiddlewareValidateProduct)
 
+	//CORS
+	ch:=gohandlers.CORS(gohandlers.AllowedOrigins([]string{*}))
+
 	//create a new server
 	s := http.Server{
 		Addr:         ":9090",           // configure the bind address
-		Handler:      sm,                // set the default handler
+		Handler:      ch(sm),                // set the default handler
 		ErrorLog:     l,                 // set the logger for the server
 		ReadTimeout:  5 * time.Second,   // max time to read request from the client
 		WriteTimeout: 10 * time.Second,  // max time to write response to the client
