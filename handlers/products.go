@@ -25,6 +25,8 @@ func (p *Products) GetProducts(rw http.ResponseWriter, r *http.Request) {
 	p.l.Println("Handle GET Products")
 	// fetch the products from the datastore
 	lp := data.GetProducts()
+
+	rw.Header().Add("content-type","application/json")
 	// serialize the list to JSON
 	err := lp.ToJSON(rw)
 	if err != nil {
