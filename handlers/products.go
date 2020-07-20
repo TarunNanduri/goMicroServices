@@ -66,7 +66,7 @@ func (p Products) UpdateProducts(rw http.ResponseWriter, r *http.Request) {
 type KeyProduct struct{}
 
 
-// MiddleWareValidateProduct to handle validation of incoming data
+// MiddlewareValidateProduct to handle validation of incoming data
 func (p Products) MiddlewareValidateProduct(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 		prod := data.Product{}
