@@ -34,6 +34,7 @@ func (p *Products) GetProducts(rw http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// @todo Comment Exported Method
 func (p *Products) AddProduct(rw http.ResponseWriter, r *http.Request) {
 	p.l.Println("Handle POST Product")
 	prod := r.Context().Value(KeyProduct{}).(data.Product)
