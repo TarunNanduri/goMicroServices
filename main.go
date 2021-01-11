@@ -7,12 +7,16 @@ import (
 	"os"
 	"time"
 
+	"github.com/TarunNanduri/goMicroServices/data"
 	"github.com/TarunNanduri/goMicroServices/handlers"
 	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
 func main() {
+	// Testing functional Options
+	airline := data.NewAirlines(data.WithName("Indian Airlines"), data.WithDestination("Atlanta"), data.WithSource("Rajahmundry"))
+	log.Printf("%v",airline)
 	// logger
 	l := log.New(os.Stdout, "MicroServices with Go", log.LstdFlags)
 	// create the handlers
